@@ -1,0 +1,155 @@
+import zipfile
+import os
+
+# HTML код
+html_code = """<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StreamVault</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0d0d0d;
+      color: #fff;
+    }
+    header {
+      background-color: #1a1a1a;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    nav {
+      background-color: #111;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px;
+    }
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+    }
+    nav a:hover {
+      color: #fff;
+    }
+    .container {
+      padding: 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 0 10px #000;
+    }
+    .card img {
+      max-width: 100px;
+      margin-bottom: 15px;
+    }
+    .card button {
+      background-color: #e50914;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .card button:hover {
+      background-color: #ff1c27;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #111;
+      color: #666;
+      margin-top: 40px;
+    }
+    .chat-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #0088cc;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 50px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #0088cc;
+      z-index: 1000;
+    }
+    @media (max-width: 600px) {
+      header {
+        font-size: 20px;
+      }
+      .card {
+        padding: 15px;
+      }
+      .card img {
+        max-width: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>StreamVault</header>
+  <nav>
+    <a href="#">Начало</a>
+    <a href="#">Услуги</a>
+    <a href="#">За нас</a>
+    <a href="#">Контакт</a>
+  </nav>
+
+  <div class="container">
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Netflix_icon.svg" alt="Netflix">
+      <h3>Netflix Lifetime</h3>
+      <p>Пълно съдържание. Платиш веднъж, гледаш завинаги.</p>
+      <button onclick="alert('Ще бъдеш пренасочен към PayPal.')">Купи с PayPal</button>
+    </div>
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify">
+      <h3>Spotify Premium Lifetime</h3>
+      <p>Без реклами. Без месечни такси. Само музика.</p>
+      <button onclick="alert('Ще бъдеш пренасочен към PayPal.')">Купи с PayPal</button>
+    </div>
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg" alt="Disney+">
+      <h3>Disney+ Lifetime</h3>
+      <p>Marvel, Star Wars и още – завинаги твое.</p>
+      <button onclick="alert('Ще бъдеш пренасочен към PayPal.')">Купи с PayPal</button>
+    </div>
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube Premium">
+      <h3>YouTube Premium</h3>
+      <p>Гледай без реклами и в бекграунд режим. Завинаги.</p>
+      <button onclick="alert('Ще бъдеш пренасочен към PayPal.')">Купи с PayPal</button>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 StreamVault. Всички права запазени.
+  </footer>
+
+  <a href="https://t.me/yourusername" target="_blank">
+    <button class="chat-button">💬 Пиши ни в Telegram</button>
+  </a>
+</body>
+</html>"""
+
+# Записване на HTML файла
+file_name = '/mnt/data/streamvault_site.zip'
+zipf = zipfile.ZipFile(file_name, 'w', zipfile.ZIP_DEFLATED)
+zipf.writestr('index.html', html_code)
+zipf.close()
+
+file_name
